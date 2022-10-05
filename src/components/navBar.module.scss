@@ -1,6 +1,12 @@
 .navBar{
     display: flex;
     gap: 10px;
-    margin-left: auto;
     text-transform: uppercase;
+    list-style: none;
+    li a {
+        color: white;
+        text-decoration: none;
+
+    }
+
 }

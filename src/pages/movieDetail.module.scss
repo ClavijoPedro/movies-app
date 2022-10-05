@@ -1,0 +1,27 @@
+.detailsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    height: 100vh;
+    gap: 1rem;
+
+	.movieImage {
+		width: 20%;
+        min-width: 400px;
+        object-fit: cover;
+
+	}
+	.movieDetails {
+        min-width: 400px;
+		width: 20%;
+		p {
+			text-align: start;
+            margin-bottom: 10px;
+            line-height: 1.5rem;
+		}
+	}
+
+
+
+    
+}
