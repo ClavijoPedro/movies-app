@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { MoviesList } from './components/MoviesList';
+import { PostersList } from './components/PostersList';
 import { Home } from './pages/Home';
-import { MovieDetail } from './pages/MovieDetail';
+import { PosterDetail } from './pages/PosterDetail';
 import { NoMatch } from './pages/NoMatch';
 
 function App() {
@@ -12,10 +12,8 @@ function App() {
 		<Header />
 		<Routes>
 			<Route path='/' element={<Home />}/>
-			{/* <Route path='/peliculas' element={<MoviesList />}/> */}
-			<Route path='categoria/:categoryId' element={<MoviesList />}/>
-			{/* <Route path='/series' element={<MoviesList />}/> */}
-			<Route path='/detalle/:movieId' element={<MovieDetail />}/>
+			<Route path='categoria/:categoryId' element={<PostersList />}/>
+			<Route path='/detalle/:movieId' element={<PosterDetail />}/>
 			<Route path='*' element={<NoMatch/>}/>
 		</Routes>
 		<Footer />

@@ -1,6 +1,6 @@
 import axios from "./customAxios"
 
-export const fetchMovies = async (url) => {
+export const fetchData = async (url) => {
     try {
         const response = await axios.get(url)
         // console.log(response)

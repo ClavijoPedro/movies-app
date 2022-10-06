@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovies } from '../utils/fetchData.js';
-import styles from './movieDetail.module.scss';
+import { fetchData } from '../utils/fetchData.js';
+import styles from './posterDetail.module.scss';
 
-export const MovieDetail = () => {
+export const PosterDetail = () => {
 	const [movie, setMovie] = useState(null);
 
 	const { movieId } = useParams();
@@ -11,7 +11,7 @@ export const MovieDetail = () => {
 	// const { data, loading, error } = useFetch(`/movie/${movieId}`);
 
 	useEffect(() => {
-		fetchMovies(`/movie/${movieId}?language=es-ES`).then((data) => setMovie(data));
+		fetchData(`/movie/${movieId}?language=es-ES`).then((data) => setMovie(data));
 	}, [movieId]);
 	// if(error){
 	//     return <p>{error}</p>
