@@ -1,7 +1,12 @@
-import { CategoryRow } from '../components/CategoryRow';
+import { useSearchParams } from 'react-router-dom';
+import { CategoryRow } from '../../components/CategoryRow/CategoryRow';
+import { PostersList } from '../../components/PostersList/PostersList';
 import styles from './home.module.scss';
 
 export const Home = () => {
+	const [searchQuery] = useSearchParams(); // from searchBar text
+	const search = searchQuery.get('search');
+
 	const requests = [
 		{ title: 'tendencias', url: '/trending/all/week?language=es' },
 		{ title: 'top', url: '/movie/top_rated?language=es' },
@@ -13,17 +18,12 @@ export const Home = () => {
 	];
 
 	return (
-		<div className='App'>
-			<div className={styles.hero}>
-				<h1>
-					Películas y series <br /> ilimitadas y mucho más
-				</h1>
-				<span>Disfruta donde quieras. Cancela cuando quieras.</span>
-				<button className='button'>Iniciar sesion</button>
-			</div>
-			{requests.map(req => (
-				<CategoryRow key={req.title} title={req.title} url={req.url} />
-			))}
+		<div className={styles.homeContainer}>
+			{search ? (
+				<PostersList />
+			) : (
+				requests.map((req) => <CategoryRow key={req.title} title={req.title} url={req.url} />)
+			)}
 		</div>
 	);
 };

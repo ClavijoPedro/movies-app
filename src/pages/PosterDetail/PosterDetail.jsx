@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchData } from '../utils/fetchData.js';
+import { fetchData } from '../../utils/fetchData.js';
 import styles from './posterDetail.module.scss';
 
 export const PosterDetail = () => {

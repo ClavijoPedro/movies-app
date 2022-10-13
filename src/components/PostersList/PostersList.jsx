@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { fetchData } from '../utils/fetchData';
-import { Loader } from './Loader';
-import { PosterCard } from './PosterCard';
+import { fetchData } from '../../utils/fetchData';
+import { Loader } from '../Loader/Loader';
+import { Poster } from '../Poster/Poster';
 import styles from './postersList.module.scss';
 
 export const PostersList = () => {
@@ -16,12 +16,12 @@ export const PostersList = () => {
 	const search = searchQuery.get('search');
 
 	const URL = search
-		? `/search/multi?language=es&query=${search}`
+		? `/search/multi?language=es-ES&query=${search}`
 		: categoryId === 'peliculas'
-		? '/discover/movie?&language=es'
+		? '/discover/movie?&language=es-ES'
 		: categoryId === 'series'
 		? '/discover/tv?&language=es'
-		: '/discover/movie?&language=es';
+		: '/discover/movie?&language=es-ES';
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -38,13 +38,15 @@ export const PostersList = () => {
 	}, [categoryId, search, URL]);
 
 	return (
-		<div className={styles.listContainer}>
+		<div className={styles.container}>
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<h3>Failed to fetch movies data</h3>
 			) : (
-				movies.length > 0 && movies.map((movie) => <PosterCard key={movie.id} movie={movie} />)
+				<div className={styles.listContainer}>
+					{movies.length > 0 && movies.map((movie) => <Poster key={movie.id} data={movie} />)}
+				</div>
 			)}
 		</div>
 	);

@@ -1,0 +1,27 @@
+.rowContainer {
+	margin-top: 80px;
+
+	h2 {
+		text-align: left;
+		margin-bottom: 15px;
+		text-transform: uppercase;
+	}
+}
+.postersContainer {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: minmax(240px, 280px);
+	grid-gap: 2rem;
+	
+	overflow-x: scroll;
+	overflow-y: hidden;
+	align-items: center;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	scrollbar-width: none;
+	padding: 0 20px;
+	width: 100%;
+
+}

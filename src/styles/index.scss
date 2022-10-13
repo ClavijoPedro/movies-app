@@ -11,19 +11,25 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+
 body {
 	margin: 0;
 	// display: flex;
 	// place-items: center;
-	// min-width: 320px;
-	// min-height: 100vh;
+	min-width: 320px;
+	min-height: 100vh;
 	color:white;
 	background-color: rgb(0, 0, 0);
+	
 }
 
 .button{
-	padding: 5px;
-	background-color: aqua;
+	padding: 15px;
+	background-color: $button-red;
 	border: none;
 	border-radius: 3px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 600;
+	font-size: 1.2rem;
 }
