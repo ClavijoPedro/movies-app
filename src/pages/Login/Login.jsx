@@ -1,9 +1,8 @@
-import { Hero } from '../../components/Hero/Hero';
 import styles from './login.module.scss';
 
 export const Login = () => {
 	return (
-		<div className={styles.hero}>
+		<div className={styles.loginContainer}>
 			<h1>
 				Películas y series <br /> ilimitadas y mucho más
 			</h1>

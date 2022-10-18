@@ -1,10 +1,8 @@
-function truncateText(str, limit, end) {
-	limit = limit ? limit : 100;
-	end = end ? end : '...';
+function truncateText(str, limit = 100, end = '...') {
 	str = str.split(' ');
 	if (str.length > limit) {
-		var cutTolimit = str.slice(0, limit);
-		return cutTolimit.join(' ') + ' ' + end;
+		const cutTolimit = str.slice(0, limit);
+		return cutTolimit.join(' ') + end;
 	}
 
 	return str.join(' ');

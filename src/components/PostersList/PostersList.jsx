@@ -6,7 +6,7 @@ import { Poster } from '../Poster/Poster';
 import styles from './postersList.module.scss';
 
 export const PostersList = () => {
-	const [movies, setMovies] = useState([]);
+	const [posters, setPosters] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
@@ -24,28 +24,29 @@ export const PostersList = () => {
 		: '/discover/movie?&language=es-ES';
 
 	useEffect(() => {
-		const getMovies = async () => {
+		const getData = async () => {
 			try {
 				const listData = await fetchData(URL);
-				setMovies(listData.results);
+				setPosters(listData.results);
 				setLoading(false);
 			} catch (error) {
 				console.log(error.message);
 				setError(true);
 			}
 		};
-		getMovies();
+		getData();
 	}, [categoryId, search, URL]);
 
+	console.log(posters)
 	return (
 		<div className={styles.container}>
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<h3>Failed to fetch movies data</h3>
+				<h3>Failed to fetch data</h3>
 			) : (
 				<div className={styles.listContainer}>
-					{movies.length > 0 && movies.map((movie) => <Poster key={movie.id} data={movie} />)}
+					{posters.length > 0 && posters.map((poster) => <Poster key={poster.id} data={poster} />)}
 				</div>
 			)}
 		</div>

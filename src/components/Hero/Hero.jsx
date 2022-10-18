@@ -9,7 +9,7 @@ export const Hero = () => {
 	useEffect(() => {
 		const getData = async () => {
 			const data = await fetchData('/discover/tv?&language=es-ES&with_networks=213');
-			console.log('esto es hero', data.results[Math.floor(Math.random() * data.results.length)]);
+			// console.log('esto es hero', data.results[Math.floor(Math.random() * data.results.length)]);
 			setPoster(data.results[Math.floor(Math.random() * data.results.length)]);
 			return data;
 		};

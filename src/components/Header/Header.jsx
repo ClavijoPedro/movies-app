@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 export const Header = () => {
 	let user = 'pepe';
-	// user = '' // para prueba
+	// let user = '' // para prueba
 	return (
-		<div className={styles.header}>
+		<div className={styles.container}>
 			<Link to={'/'}>
 				<img src={appLogo} alt='logo' />
 			</Link>

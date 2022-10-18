@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { CategoryRow } from '../../components/CategoryRow/CategoryRow';
+import { Hero } from '../../components/Hero/Hero';
 import { PostersList } from '../../components/PostersList/PostersList';
 import styles from './home.module.scss';
 
@@ -19,6 +20,7 @@ export const Home = () => {
 
 	return (
 		<div className={styles.homeContainer}>
+			{!search && <Hero />}
 			{search ? (
 				<PostersList />
 			) : (
@@ -26,4 +28,13 @@ export const Home = () => {
 			)}
 		</div>
 	);
+	// return (
+	// 	<div className={styles.homeContainer}>
+	// 		{search ? (
+	// 			<PostersList />
+	// 		) : (
+	// 			requests.map((req) => <CategoryRow key={req.title} title={req.title} url={req.url} />)
+	// 		)}
+	// 	</div>
+	// );
 };
