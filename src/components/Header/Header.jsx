@@ -1,7 +1,6 @@
 import styles from './header.module.scss';
-import appLogo from '../../assets/rmovs-01.svg';
+import appLogo from '../../assets/logo-rm.svg';
 import { NavBar } from '../NavBar/NavBar';
-import { SearchBar } from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
@@ -12,12 +11,7 @@ export const Header = () => {
 			<Link to={'/'}>
 				<img src={appLogo} alt='logo' />
 			</Link>
-			{user && (
-				<>
-					<SearchBar />
-					<NavBar />
-				</>
-			)}
+			{user && <NavBar />}
 		</div>
 	);
 };

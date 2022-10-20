@@ -21,7 +21,7 @@ function App() {
 				<Route path='/register' element={<Register />} />
 				<Route path='/home' element={<Home />} />
 				<Route path='/categoria/:categoryId' element={<PostersList />} />
-				<Route path='/detalle/:posterId' element={<PosterDetail />} />
+				<Route path=':categoryId/detalle/:posterId' element={<PosterDetail />} />
 				<Route path='*' element={<NoMatch />} />
 			</Routes>
 			<Footer />

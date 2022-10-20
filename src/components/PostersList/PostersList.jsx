@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { fetchData } from '../../utils/fetchData';
 import { Loader } from '../Loader/Loader';
 import { Poster } from '../Poster/Poster';
+import { SearchBar } from '../SearchBar/SearchBar';
 import styles from './postersList.module.scss';
 
 export const PostersList = () => {
@@ -10,18 +11,21 @@ export const PostersList = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
-	const { categoryId } = useParams();
+	const { categoryId } = useParams(); // from nav link
 
-	const [searchQuery] = useSearchParams(); // from searchBar text
+	const [searchQuery] = useSearchParams(); // from searchBar input
 	const search = searchQuery.get('search');
 
-	const URL = search
-		? `/search/multi?language=es-ES&query=${search}`
-		: categoryId === 'peliculas'
-		? '/discover/movie?&language=es-ES'
-		: categoryId === 'series'
-		? '/discover/tv?&language=es'
-		: '/discover/movie?&language=es-ES';
+	const URL =
+		search && categoryId === 'series'
+			? `/search/tv?language=es-ES&query=${search}`
+			: search && categoryId === 'peliculas'
+			? `/search/movie?language=es-ES&query=${search}`
+			: categoryId === 'peliculas'
+			? '/discover/movie?&language=es-ES'
+			: categoryId === 'series'
+			? '/discover/tv?&language=es'
+			: '/discover/movie?&language=es-ES';
 
 	useEffect(() => {
 		const getData = async () => {
@@ -37,7 +41,7 @@ export const PostersList = () => {
 		getData();
 	}, [categoryId, search, URL]);
 
-	console.log(posters)
+
 	return (
 		<div className={styles.container}>
 			{loading ? (
@@ -45,9 +49,13 @@ export const PostersList = () => {
 			) : error ? (
 				<h3>Failed to fetch data</h3>
 			) : (
-				<div className={styles.listContainer}>
-					{posters.length > 0 && posters.map((poster) => <Poster key={poster.id} data={poster} />)}
-				</div>
+				<>
+					<SearchBar />
+					<div className={styles.listContainer}>
+						{posters.length > 0 &&
+							posters.map((poster) => <Poster key={poster.id} data={poster} category={categoryId} />)}
+					</div>
+				</>
 			)}
 		</div>
 	);
