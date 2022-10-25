@@ -1,7 +1,10 @@
+@use '../../styles/mixins.scss' as breakpoint;
+
 .card{
     text-decoration: none;
     color: white;
     height: 415px ;
+    position: relative;
     
     .cardImage{
         width: 100%;
@@ -10,11 +13,17 @@
     .cardTitle{
         padding: 0.5rem 0;
         font-size: 1.1rem;
-        text-transform: uppercase;
+        line-height: 1.15rem;
     }
     
     &:hover{
         transform: scale(1.05);
         transition: 0.3s ease-in-out;
     }
+    
+    @include breakpoint.for-device(tablet){
+        scroll-snap-align: center;
+        
+    }
+
 }

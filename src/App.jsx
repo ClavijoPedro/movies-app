@@ -1,21 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
 import { PostersList } from './components/PostersList/PostersList';
 import { Home } from './pages/Home/Home';
 import { PosterDetail } from './pages/PosterDetail/PosterDetail';
 import { NoMatch } from './pages/NoMatch/NoMatch';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/register/Register';
-import { Hero } from './components/Hero/Hero';
+import { NavBar } from './components/NavBar/NavBar';
 
 function App() {
 	let user = '';
 	user = 'pepe'; // para prueba
 	return (
 		<>
-			<Header />
-			{/* <Hero /> */}
+			<NavBar />
 			<Routes>
 				<Route path='/' element={!user ? <Login /> : <Home />} />
 				<Route path='/register' element={<Register />} />

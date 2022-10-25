@@ -20,7 +20,7 @@ export const SearchBar = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<input type={'text'} onChange={setSearch} value={searchKey} placeholder={`Buscar ${categoryId}...`} />
+			<input type={'text'} onChange={setSearch} value={searchKey} placeholder={`Buscar...`} />
 			<button type='submit' className={styles.btn}>
 				<CgSearch size={20} />
 			</button>

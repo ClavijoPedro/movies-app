@@ -1,40 +1,83 @@
-.detailsContainer {
-	// display: flex;
-	// flex-wrap: wrap;
-	// justify-content: center;
-    min-height: 100vh;
-    // gap: 1rem;
-	
-	.posterImage {
-		width: 20%;
-        width: 100%;
-		height: 100vh;
-        object-fit: cover;
-		position: relative;
+@use '../../styles/mixins.scss' as breakpoint;
 
+.detailsContainer {
+	width: 100%;
+	min-height: 100vh;
+	height: 100vh;
+	position: relative;
+	margin-bottom: 100px;
+
+	.posterImage {
+		width: 100%;
+		height: 100vh;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
 	}
 	.posterDetails {
 		position: absolute;
-		left: 5%;
-		top:40%;
-        min-width: 400px;
-		width: 50%;
-		& > * {
-			text-align: start;
-            margin-bottom: 10px;
-            line-height: 1.5rem;
-		}
-		h2{
-			font-size: 5rem;
-			line-height: 5rem;
+		top: 50%;
+		left: 0%;
+		z-index: 10;
+		transform: translate(15%, -50%);
+		width: 40%;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 25px;
 
+		h1 {
+			margin: 0;
+			text-align: left;
+			font-weight: 800;
+			font-size: 4rem;
 		}
-		p{
-			width: 50%;
+		.description {
+			max-width: 400px;
+			height: 100px;
+			word-wrap: break-word;
+			font-size: 1rem;
+			text-align: justify;
+			line-height: 1.5;
+
 		}
 	}
 
+	@include breakpoint.for-device(tablet){
+		.posterDetails{
+			width: 100%;
+			transform: translate(0, -50%);
+			padding: 0 8rem;
+			text-align: center;
+			align-items: center;
+			h1{
+				text-align: center;
+				font-size: 3rem;
+			}
 
+			p{
+				max-width: none;
+			}
+		}
+	}
 
-    
+	@include breakpoint.for-device(smartphone){
+		.posterDetails{
+			padding: 0 3rem;
+			h1{
+				font-size: 2.1rem;
+			}
+		}
+	}
+	.fade {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 100%;
+		width: 50%;
+		z-index: 1;
+		background-image: linear-gradient(-90deg, transparent, rgba(0, 0, 0, 0.7), #111);
+	}
 }

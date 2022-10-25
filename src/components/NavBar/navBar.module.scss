@@ -1,12 +1,60 @@
-.navBar{
-    display: flex;
-    gap: 10px;
-    text-transform: uppercase;
-    list-style: none;
-    li a {
-        color: white;
-        text-decoration: none;
+.container {
+	width: 100%;
+	padding: 1.5rem 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-    }
+	.appLogo {
+		width: 150px;
+	}
 
+	.navBar {
+		width: 100%;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.toggleBtn {
+		display: none;
+		@media all and (max-width: 768px) {
+			display: block;
+		}
+	}
+	.navLinks {
+		display: flex;
+		text-transform: uppercase;
+		list-style: none;
+		@media all and (max-width: 768px) {
+			display: none;
+		}
+		li a {
+			color: white;
+			text-decoration: none;
+			margin: 10px;
+		}
+	}
+
+	#open {
+		& .navLinks {
+			height: 100vh;
+			width: 100%;
+			background-color: red;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			top: 80px;
+			z-index: 1000;
+			& li {
+				width: 100%;
+				text-align: center;
+				padding: 20px 0;
+				background-color: rgb(219, 0, 0);
+				&:hover {
+					background-color: rgb(10, 10, 10);
+				}
+			}
+		}
+	}
 }

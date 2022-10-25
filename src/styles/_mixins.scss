@@ -1,0 +1,20 @@
+// media querys
+@mixin for-device($breakpoint) {
+	@if $breakpoint == smartphone {
+		@media all and (max-width: 480px) {
+			@content;
+		}
+	}
+	@if $breakpoint == tablet {
+		// @media all and (min-width: 576px) and (max-width: 760px) {
+		@media all  and (max-width: 768px) {
+			@content;
+		}
+	}
+	// @if $breakpoint == desktop {
+	// 	@media all and (min-width: 990px) {
+	// 		@content;
+	// 	}
+	// }
+};
+

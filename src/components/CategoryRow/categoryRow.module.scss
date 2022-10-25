@@ -1,28 +1,36 @@
+@use '../../styles/mixins.scss' as breakpoint;
+
 .rowContainer {
-	margin-top: 80px;
+	margin-top: 50px;
 	padding: 0 20px;
 
 	h2 {
 		text-align: left;
-		margin-bottom: 15px;
 		text-transform: uppercase;
 	}
-}
-.postersContainer {
-	display: grid;
-	grid-auto-flow: column;
-	grid-auto-columns: minmax(240px, 280px);
-	grid-gap: 2rem;
-	
-	overflow-x: scroll;
-	overflow-y: hidden;
-	align-items: center;
 
-	&::-webkit-scrollbar {
-		display: none;
+	.postersContainer {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(240px, 280px);
+		grid-gap: 2rem;
+		
+		overflow-x: scroll;
+		overflow-y: hidden;
+		align-items: center;
+		
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		scrollbar-width: none;
+		padding: 2.2rem 1rem;
+		width: 100%;
 	}
-	scrollbar-width: none;
-	padding: 1rem;
-	width: 100%;
+	
+	@include breakpoint.for-device(tablet){
+		.posterContainer{
+			scroll-snap-type: x mandatory;
+		}
 
+	}
 }
