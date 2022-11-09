@@ -1,4 +1,6 @@
-import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CategoryRow } from '../../components/CategoryRow/CategoryRow';
 import { Hero } from '../../components/Hero/Hero';
 import { PostersList } from '../../components/PostersList/PostersList';
@@ -7,6 +9,10 @@ import styles from './home.module.scss';
 export const Home = () => {
 	const [searchQuery] = useSearchParams(); // from searchBar text
 	const search = searchQuery.get('search');
+
+	const user = useSelector(state => state.auth)
+	
+	const navigate = useNavigate()
 
 	const requests = [
 		{ title: 'tendencias', url: '/trending/all/week?language=es' },
@@ -18,6 +24,12 @@ export const Home = () => {
 		{ title: 'documentales', url: '/discover/movie?&language=es&with_genres=99' },
 	];
 
+	useEffect(() => {
+		if(!user.loggedIn){
+			navigate('/login')
+		}
+	}, [user])
+	
 	return (
 		<div className={styles.homeContainer}>
 			{!search && <Hero />}
@@ -28,13 +40,4 @@ export const Home = () => {
 			)}
 		</div>
 	);
-	// return (
-	// 	<div className={styles.homeContainer}>
-	// 		{search ? (
-	// 			<PostersList />
-	// 		) : (
-	// 			requests.map((req) => <CategoryRow key={req.title} title={req.title} url={req.url} />)
-	// 		)}
-	// 	</div>
-	// );
 };
