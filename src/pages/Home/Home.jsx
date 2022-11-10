@@ -10,9 +10,9 @@ export const Home = () => {
 	const [searchQuery] = useSearchParams(); // from searchBar text
 	const search = searchQuery.get('search');
 
-	const user = useSelector(state => state.auth)
+	// const user = useSelector(state => state.auth)
 	
-	const navigate = useNavigate()
+	// const navigate = useNavigate()
 
 	const requests = [
 		{ title: 'tendencias', url: '/trending/all/week?language=es' },
@@ -24,11 +24,11 @@ export const Home = () => {
 		{ title: 'documentales', url: '/discover/movie?&language=es&with_genres=99' },
 	];
 
-	useEffect(() => {
-		if(!user.loggedIn){
-			navigate('/login')
-		}
-	}, [user])
+	// useEffect(() => {
+	// 	if(!user.loggedIn){
+	// 		navigate('/login')
+	// 	}
+	// }, [user])
 	
 	return (
 		<div className={styles.homeContainer}>

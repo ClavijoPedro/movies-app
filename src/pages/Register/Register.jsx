@@ -29,8 +29,6 @@ export const Register = () => {
 	// 	});
 	// };
 
-
-
 	return (
 		// <form onSubmit={handleSubmit} className={styles.loginForm}>
 		// 	<input type='email' autoComplete='false' name='email' placeholder='email...' onChange={handleInput} />
@@ -43,6 +41,8 @@ export const Register = () => {
 		// 	/>
 		// 	<button className='button'>sign in</button>
 		// </form>
-		<AuthForm />
-	)
+		<div className={styles.registerContainer}>
+			<AuthForm />
+		</div>
+	);
 };
